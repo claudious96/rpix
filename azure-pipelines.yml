@@ -2,7 +2,7 @@ jobs:
   - job: rpix
     timeoutInMinutes: 360
     pool:
-      vmImage: Ubuntu 16.04
+      vmImage: Ubuntu 20.04
     steps:
       - checkout: self
         clean: true
