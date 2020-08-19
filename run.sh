@@ -17,13 +17,12 @@ temp="${PATH%\"}"
 temp="${temp#\"}"
 export PATH="${temp}:/opt/cross-pi-gcc-10.1.0-2/bin/"
 
-aria2c -x 8 http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.24.0.tar.bz2 && \
-	tar axf crosstool-ng-1.24.0.tar.bz2 && \
-	pushd crosstool-ng-1.24.0 && \
-	./configure && \
-	make -j4 && \
-	sudo make install && \
-	popd
+git clone https://github.com/egtvedt/crosstool-ng && cd crosstool-ng && git checkout add-gcc-9.3-and-10.2-binutils-2.35 \
+        && ./bootstrap && cd .. && pushd crosstool-ng && \
+        ./configure && \
+        make -j4 && \
+        sudo make install && \
+        popd
 
 ct-ng build
 
